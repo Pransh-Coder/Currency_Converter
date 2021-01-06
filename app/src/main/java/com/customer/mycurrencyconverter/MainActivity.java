@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         fromDropdown = findViewById(R.id.fromDropdown);
         toDropdown = findViewById(R.id.toDropdown);
 
+        toOutput.setEnabled(false);
+
         fromDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -73,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     public boolean checkInput(){
 
         if (fromInput.getText().toString().isEmpty()){
             Toast.makeText(this, "Please enter a value to convert ", Toast.LENGTH_SHORT).show();
+            return false;
         }
         else if (fromCurrency.equalsIgnoreCase(toCurrency)){
             Toast.makeText(MainActivity.this, "from and to values are same.", Toast.LENGTH_SHORT).show();
